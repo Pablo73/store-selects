@@ -1,0 +1,25 @@
+{
+  "name": "exercicos_projeto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": { 
+    "test": "jest --runInBand --verbose --forceExit",
+    "test:watch": "jest --watchAll",
+    "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js, .jsx"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@jest/test-sequencer": "^29.3.1",
+    "eslint-config-trybe-backend": "^2.1.0",
+    "jest": "^29.3.1",
+    "mysql-import": "^5.0.26"
+  },
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.27.0"
+  }
+}

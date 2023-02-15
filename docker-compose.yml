@@ -1,0 +1,33 @@
+version: "3.8"
+
+services:
+  app:
+    image: node:16-alpine
+    container_name: store_app
+    tty: true
+    stdin_open: true
+    command: sh
+    restart: on-failure
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - db
+    environment:
+      DB_USER: root
+      DB_PASSWORD: password
+      DB_HOSTNAME: db
+      DB_DATABASE: store
+      DB_PORT: 3306
+      DB_DIALECT: mysql
+  db:
+    container_name: store_db
+    image: mysql:8.0
+    restart: always
+    # Caso a porta 3306 já esteja em uso, você pode alterar a porta do host no campo "ports"
+    ports:
+      - "3306:3306"
+    # Para se conectar ao container via Workbench ou em outra ferramenta, o usuário e senha devem ser os mesmos definidos aqui, ou seja, o usuário é root e a senha password
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DEFAULT_AUTH: mysql_native_password
